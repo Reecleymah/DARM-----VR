@@ -28,10 +28,12 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap:
+    MotionVector: User
     RenderType: Transparent
   disabledShaderPasses:
   - TransparentDepthPostpass
   - TransparentBackface
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -44,6 +46,8 @@ Material:
     - _RECALCULATE_CARD_NORMALS: 1
     - _Root_Distance: 0.367
     - _Root_Fade: 0.328
+    - _StencilWriteMaskDepth: 9
+    - _StencilWriteMaskMV: 43
     - _Tip_Distance: 0.54
     - _Tip_Fade: 0.643
     m_Colors:
