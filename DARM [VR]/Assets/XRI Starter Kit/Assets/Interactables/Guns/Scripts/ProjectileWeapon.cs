@@ -9,7 +9,7 @@ using static Unity.Mathematics.math;
 
 namespace MikeNspired.UnityXRHandPoser
 {
-    public class ProjectileWeapon : MonoBehaviour
+public class ProjectileWeapon : MonoBehaviour
     {
         [SerializeField] private Transform firePoint;
         [SerializeField] private Rigidbody projectilePrefab;
@@ -87,6 +87,12 @@ namespace MikeNspired.UnityXRHandPoser
             fireTimer += Time.deltaTime;
         }
 
+        private void LateUpdate()
+        {
+            if (isFiring && automaticFiring)
+                FireGun();
+        }
+
         public void FireGun()
         {
             if (bulletsPerShot < 1) return;
@@ -120,6 +126,9 @@ namespace MikeNspired.UnityXRHandPoser
                 BulletFiredEvent.Invoke();
                 StopAllCoroutines();
                 StartRecoil();
+
+                // Debugging
+                Debug.DrawRay(firePoint.position, shotDirection * bulletSpeed, Color.red, 2f);
             }
 
             if (magazineAttach && magazineAttach.Magazine && magazineAttach.Magazine.CurrentAmmo == 0)
@@ -129,7 +138,7 @@ namespace MikeNspired.UnityXRHandPoser
             {
                 var flash = Instantiate(bulletFlash);
                 flash.transform.position = firePoint.position;
-                flash.positionToMatch = firePoint; //Follow gun barrel on update  
+                flash.positionToMatch = firePoint; // Follow gun barrel on update  
             }
 
             if (fireAudio)

@@ -45,6 +45,7 @@ namespace MikeNspired.UnityXRHandPoser
             animator.AnimateTo();
             bounceAnimation.Stop();
             SetDamageText(damage);
+            
         }
 
         public void Activate()

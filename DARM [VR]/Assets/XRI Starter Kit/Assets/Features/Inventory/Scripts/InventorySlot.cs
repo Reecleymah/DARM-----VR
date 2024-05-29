@@ -46,7 +46,7 @@ namespace MikeNspired.UnityXRHandPoser
         private Vector3 goalSizeToFitInSlot;
         private const float AnimationDisableLength = .5f, AnimationLengthItemToSlot = .15f;
         private bool reload = true;
-        
+
         private void Awake()
         {
             OnValidate();
@@ -72,6 +72,7 @@ namespace MikeNspired.UnityXRHandPoser
                 SetupNewMeshClone(currentSlotItem);
             }
 
+            
             gameObject.SetActive(false);
         }
 
@@ -462,6 +463,7 @@ namespace MikeNspired.UnityXRHandPoser
                 slotDisplayWhenContainsItem.GetComponent<Animator>().SetBool(onHoverAnimatorHash, false);
             }
         }
+
     }
 
 
