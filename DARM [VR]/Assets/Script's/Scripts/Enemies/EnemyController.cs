@@ -13,18 +13,37 @@ public class EnemyController : MonoBehaviour, IDamageable{
     private Animator animator; // Referencia al componente Animator
     private AudioSource audioSource;
     public UnityEventFloat onHit;
-
+    [SerializeField] private float autoDestroyTime = 6.0f;
+    private float timer = 0;
     public bool death = false; // Variable para indicar si el enemigo está muerto
+    public GameManager gameManager;
 
     void Start()
     {
         player = GameObject.Find("Point"); // Busca al jugador en la jerarquía de objetos por su nombre
         animator = GetComponent<Animator>(); // Obtén el componente Animator
         audioSource = GetComponent<AudioSource>();
+
+        // Buscar el GameManager en la escena
+        gameManager = FindObjectOfType<GameManager>();
+
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager no encontrado en la escena.");
+        }
+
     }
 
     void Update()
     {
+        
+        timer += Time.deltaTime;
+
+        if(timer > autoDestroyTime){
+
+            Destroy(gameObject);
+        }
+        
         if (death)
         {
             // Si el enemigo está muerto, no realizar ninguna acción adicional
@@ -53,7 +72,8 @@ public class EnemyController : MonoBehaviour, IDamageable{
     {
         Debug.Log("TakeDamage called, setting death to true.");
         // Temporarily comment out onHit.Invoke to check if it's causing issues
-        // onHit.Invoke(damage);
+        onHit.Invoke(damage);
+        gameManager.UpdateScore(15);
         death = true; // Indicar que el enemigo está muerto
     }
 

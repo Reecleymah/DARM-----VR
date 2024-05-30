@@ -28,12 +28,13 @@ public class EnemyProjectile : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision){
+    private void OnTriggerEnter(Collider other){
 
-        if(collision.gameObject.CompareTag("Player")){
+        if(other.gameObject.CompareTag("Player")){
 
             Destroy(gameObject);
-            GameManager.Instance.UpdateScore(-10);
+            gameManager.UpdateScore(-20);
+            gameManager.UpdateHealt(-15);
 
         }
 

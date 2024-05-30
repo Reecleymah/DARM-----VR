@@ -21,6 +21,8 @@ public class Timer : MonoBehaviour
         }
 
         //timetext.text = gameManager.healthPlayer.ToString();
+        gameManager.scoreText.text = gameManager.scoreText.text = string.Format("{0}", gameManager.pointsPlayer);
+        gameManager.healthText.text = gameManager.healthText.text = string.Format("{0}", gameManager.healthPlayer);
 
     }
 
@@ -28,7 +30,13 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update(){
 
-        //Debug.Log(gameManager.healthPlayer);
+        if(gameManager.healthPlayer <= 0){
+
+            gameManager.scoreText.text = "Game Over";
+            gameManager.healthText.text = gameManager.healthText.text = string.Format("{0}", 0);
+            StartCoroutine(action("Tutorial"));
+
+        }
     }
     
     IEnumerator action(string NombreEscena){

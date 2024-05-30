@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public Camera vrCamera;
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] public TextMeshProUGUI scoreText;
+    [SerializeField] public TextMeshProUGUI healthText;
     public float pointsPlayer = 0;
+    public float healthPlayer = 100;
 
     public void Awake(){
 
@@ -25,8 +27,17 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int points){
 
         Debug.Log("Entro el disparo");
-        pointsPlayer -= points;
+        pointsPlayer += points;
         scoreText.text = string.Format("{0}", pointsPlayer);
 
     }
+
+    public void UpdateHealt(int points){
+
+        Debug.Log("Quitar vida");
+        healthPlayer += points;
+        healthText.text = string.Format("{0}", healthPlayer);
+
+    }
+
 }

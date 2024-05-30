@@ -1864,6 +1864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoDestroyTime: 2
+  gameManager: {fileID: 0}
 --- !u!82 &4196905548971053489
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1874,18 +1875,18 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cbb500b4a4c4afe48bc1ffdfcf09311c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bb45aabfe6ca2af4d9ee1019e2e21608, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.175
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 241
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1920,7 +1921,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1950,7 +1951,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.55
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1987,9 +1988,10 @@ MonoBehaviour:
   refreshRate: 0.1
   dieDelay: 0.25
   audioSource: {fileID: 4196905548971053489}
-  deathSound: {fileID: 8300000, guid: 6accef643921e9e48b9609649b1ce284, type: 3}
+  deathSound: {fileID: 8300000, guid: 0fe70d5dba960434e8e70e6036d6a5ed, type: 3}
   particleSystems: []
   type: 2
+  gameManager: {fileID: 0}
 --- !u!114 &3548284044458966713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2008,6 +2010,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
+  autoDestroyTime: 6
   death: 0
   projectileOrigin: {fileID: 4163674867077140521}
 --- !u!136 &822918329997380497
@@ -2025,7 +2028,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

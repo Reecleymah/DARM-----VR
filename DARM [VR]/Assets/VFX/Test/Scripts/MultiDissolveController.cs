@@ -161,7 +161,7 @@ public class MultiDissolveController : MonoBehaviour
 
         // Optionally, destroy the game object after dissolving
         Debug.Log("Dissolve complete, destroying gameObject.");
-        gameManager.UpdateScore(10);
+        gameManager.UpdateScore(20);
         Destroy(gameObject);
     }
 }

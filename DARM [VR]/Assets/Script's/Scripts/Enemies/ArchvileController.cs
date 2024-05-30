@@ -14,6 +14,9 @@ public class ArchvileController : MonoBehaviour, IDamageable
     private AudioSource audioSource;
     public UnityEventFloat onHit;
 
+    [SerializeField] private float autoDestroyTime = 6.0f;
+    private float timer = 0;
+
     public bool death = false; // Variable para indicar si el enemigo está muerto
 
     // Transform para especificar el punto de origen del proyectil (por ejemplo, la mano)
@@ -34,6 +37,14 @@ public class ArchvileController : MonoBehaviour, IDamageable
 
     void Update()
     {
+        timer += Time.deltaTime;
+
+        if(timer > autoDestroyTime){
+
+            Destroy(gameObject);
+        }
+        
+        
         if (death)
         {
             // Si el enemigo está muerto, no realizar ninguna acción adicional
@@ -68,7 +79,7 @@ public class ArchvileController : MonoBehaviour, IDamageable
     {
         Debug.Log("TakeDamage called, setting death to true.");
         // Temporarily comment out onHit.Invoke to check if it's causing issues
-        onHit.Invoke(damage);
+        //onHit.Invoke(damage);
         death = true; // Indicar que el enemigo está muerto
     }
 
