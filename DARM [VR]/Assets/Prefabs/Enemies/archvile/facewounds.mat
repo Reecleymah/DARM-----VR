@@ -8,26 +8,33 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: facewounds
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 6e6ce89ce9c58e2439b25980aa5118e9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _RECEIVE_SHADOWS_OFF
-  - _SURFACE_TYPE_TRANSPARENT
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
-  disabledShaderPasses:
-  - DepthOnly
-  - SHADOWCASTER
-  m_LockedProperties: 
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: Texture2D_2c2ca6cdc4f446b7bba252022230d397
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_2c2ca6cdc4f446b7bba252022230d397:
+        m_Texture: {fileID: 2800000, guid: 1ee19a149c56c81468fde5cbc657639f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_55380eb1471a4639baf4b28d675fa4c3:
+        m_Texture: {fileID: 2800000, guid: 4f36702f1b9cc1a4faa3a12f45d98ac3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_d5e2fd89e9704b90b6f72a8dab14c1be:
+        m_Texture: {fileID: 2800000, guid: 9d0badd413fc6cb4382c543a887ec78d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -86,6 +93,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - DissolveAmount_: 0
+    - Vector1_54ea61343b31437eb9dbf40b74bbe298: 0.5
+    - Vector1_673383fe38b549be9eaa13ce65034034: 0.02
+    - Vector1_6964f715be9744d3835a6c8d3838d11b: 1
+    - Vector1_9af9cafbc1dc4761bbfc7c1b835011ab: 0.5
+    - Vector1_a748c4b392da4d9f9cbcc999bf6cdaf3: 30
+    - Vector1_da1bc6d90cc649d8abe509eb7088a1ef: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -107,6 +121,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _Smoothness: 0.5
@@ -119,6 +134,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
+    - Color_100dff1976004c469324e159b869568f: {r: 2.0236013, g: 0, b: 0.017977579, a: 1}
+    - Color_39b4056597f14ccf88c570d07791ea17: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 0}
     - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}

@@ -7,6 +7,7 @@ public class EnemyProjectile : MonoBehaviour
     
     [SerializeField] private float autoDestroyTime = 5.0f;
     private float timer = 0;
+    public GameManager gameManager;
 
     void Start()
     {
@@ -16,6 +17,15 @@ public class EnemyProjectile : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        // Buscar el GameManager en la escena
+        gameManager = FindObjectOfType<GameManager>();
+
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager no encontrado en la escena.");
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision){
@@ -23,7 +33,7 @@ public class EnemyProjectile : MonoBehaviour
         if(collision.gameObject.CompareTag("Player")){
 
             Destroy(gameObject);
-            //GameManager.Instance.UpdateScore(-5.0f);
+            GameManager.Instance.UpdateScore(-10);
 
         }
 

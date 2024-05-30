@@ -10,7 +10,7 @@ public class MultiDissolveController : MonoBehaviour
     public VisualEffect VFXGraph;
     public float dissolveRate = 0.05f;
     public float refreshRate = 0.1f;
-    public float dieDelay = 0.25f;
+    public float dieDelay = 0.15f;
 
     public AudioSource audioSource;
     public AudioClip deathSound;
@@ -19,10 +19,22 @@ public class MultiDissolveController : MonoBehaviour
     private bool alive = true;
     private Material[][] dissolveMaterials;
 
-    private EnemyController enemyController;
+    private ArchvileController archvileController;
+    public int type = 0;
+
+    public GameManager gameManager;
 
     void Start()
     {
+        
+        // Buscar el GameManager en la escena
+        gameManager = FindObjectOfType<GameManager>();
+
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager no encontrado en la escena.");
+        }
+        
         if (VFXGraph != null)
         {
             VFXGraph.Stop();
@@ -46,20 +58,23 @@ public class MultiDissolveController : MonoBehaviour
             Debug.Log("No Skinned Mesh Renderers assigned in the inspector.");
         }
 
-        enemyController = GetComponent<EnemyController>();
-        if (enemyController == null)
+
+        archvileController = GetComponent<ArchvileController>();
+        if (archvileController == null)
         {
-            Debug.Log("No EnemyController found on the GameObject.");
+            Debug.Log("No ArchvileController found on the GameObject.");
         }
     }
 
     private void Update()
     {
-        if (alive && enemyController != null && enemyController.death)
+        
+        if (alive && archvileController != null && archvileController.death)
         {
-            Debug.Log("Death detected, starting DissolveCo.");
-            StartCoroutine(DissolveCo());
+                Debug.Log("Death detected, starting DissolveCo.");
+                StartCoroutine(DissolveCo());
         }
+        
     }
 
     IEnumerator DissolveCo()
@@ -69,7 +84,7 @@ public class MultiDissolveController : MonoBehaviour
         // Trigger the death animation
         if (animator != null)
         {
-            animator.SetTrigger("Die");
+            animator.SetBool("isDeath", true);
         }
         else
         {
@@ -103,6 +118,10 @@ public class MultiDissolveController : MonoBehaviour
             Debug.Log("No ParticleSystems assigned in the inspector.");
         }
 
+        // Wait for the animation to start
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsName("Idle|Death"));
+        
+        // Wait for the dieDelay before starting the dissolve effect
         yield return new WaitForSeconds(dieDelay);
 
         // Play the VFX graph
@@ -140,9 +159,9 @@ public class MultiDissolveController : MonoBehaviour
             yield break;
         }
 
-        // Destroy the game object after dissolving
+        // Optionally, destroy the game object after dissolving
         Debug.Log("Dissolve complete, destroying gameObject.");
+        gameManager.UpdateScore(10);
         Destroy(gameObject);
     }
-
 }

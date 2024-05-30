@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MikeNspired.UnityXRHandPoser;
 using UnityEngine;
 
-public class ArchvileController : MonoBehaviour
+public class ArchvileController : MonoBehaviour, IDamageable
 {
     private GameObject player;
     [SerializeField] public GameObject projectilePrefab;
@@ -68,7 +68,7 @@ public class ArchvileController : MonoBehaviour
     {
         Debug.Log("TakeDamage called, setting death to true.");
         // Temporarily comment out onHit.Invoke to check if it's causing issues
-        // onHit.Invoke(damage);
+        onHit.Invoke(damage);
         death = true; // Indicar que el enemigo está muerto
     }
 

@@ -820,6 +820,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 6accef643921e9e48b9609649b1ce284, type: 3}
   particleSystems:
   - {fileID: 496105327029272064}
+  type: 3
 --- !u!137 &7853874132936798684 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -8848619517273184814, guid: e8fd14a0bcb64554dafc63ce1cd8827b, type: 3}

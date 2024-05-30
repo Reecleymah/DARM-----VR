@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public Camera ARCamera;
+    public Camera vrCamera;
     [SerializeField] private TextMeshProUGUI scoreText;
-
-    public int activeEnemyCount = 0; // Contador de enemigos activos
-    private float currentScore = 0;
+    public float pointsPlayer = 0;
 
     public void Awake(){
 
@@ -21,22 +20,13 @@ public class GameManager : MonoBehaviour
 
             Instance = this;
         }
-
     }
 
-    public void UpdateScore(float points){
+    public void UpdateScore(int points){
 
-        currentScore += points;
-        scoreText.text = string.Format("{0}", currentScore);
+        Debug.Log("Entro el disparo");
+        pointsPlayer -= points;
+        scoreText.text = string.Format("{0}", pointsPlayer);
 
     }
-
-    public void UpdateActiveEnemyCount(){
-        activeEnemyCount++;
-    }
-
-    public void DecreseActiveEnemyCount(){
-        activeEnemyCount--;
-    }
-    
 }

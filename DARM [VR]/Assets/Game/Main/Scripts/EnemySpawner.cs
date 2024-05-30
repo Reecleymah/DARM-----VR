@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    // Lista de prefabs de enemigos para spawnear
+    public List<GameObject> enemyPrefabs;
     public Transform[] spawnPoints;
     public int numberOfEnemies = 5;
     public float spawnDelay = 1f;
@@ -33,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < numberOfEnemies; i++)
         {
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
             Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
             yield return new WaitForSeconds(spawnDelay);
         }

@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour, IDamageable{
 
     void Start()
     {
-        player = GameObject.Find("XR Origin"); // Busca al jugador en la jerarquía de objetos por su nombre
+        player = GameObject.Find("Point"); // Busca al jugador en la jerarquía de objetos por su nombre
         animator = GetComponent<Animator>(); // Obtén el componente Animator
         audioSource = GetComponent<AudioSource>();
     }
